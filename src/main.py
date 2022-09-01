@@ -93,9 +93,9 @@ def simple(data = "compas", treat = "FairBalance", inject = {"race": 0.2}, repea
         result["F1 Minority"].append(m_test.f1_minority())
         result["EOD"].append(m_test.eod(attribute))
         result["AOD"].append(m_test.aod(attribute))
-    result = {key: "%.2f (%.2f)" % (np.median(result[key]),
-                                    np.quantile(result[key], 0.75) - np.quantile(
-                                        result[key], 0.25)) for key in result}
+    result = {key: "%d (%d)" % (round(100*np.median(result[key])),
+                                    round(100*np.quantile(result[key], 0.75) - np.quantile(
+                                        result[key], 0.25))) for key in result}
     return result
 
 def inject_per_data(data = "compas", A = "sex"):
@@ -103,21 +103,21 @@ def inject_per_data(data = "compas", A = "sex"):
     results = {key: [] for key in columns}
     result = simple(data=data, treat = "None", inject={A: 0.0})
     results["Treatment"].append("None")
-    results["Inject"].append("0.0")
+    results["Inject"].append("0")
     for key in result:
         results[key].append(result[key])
     for i in range(5):
         ratio = i / 10
         result = simple(data=data, treat="FairBalance", inject={A: ratio})
         results["Treatment"].append("FairBalance")
-        results["Inject"].append("%.1f" %ratio)
+        results["Inject"].append("%d" % int(ratio*100))
         for key in result:
             results[key].append(result[key])
     for i in range(1,5):
         ratio = -i / 10
         result = simple(data=data, treat="FairBalance", inject={A: ratio})
         results["Treatment"].append("FairBalance")
-        results["Inject"].append("%.1f" % ratio)
+        results["Inject"].append("%d" % int(ratio*100))
         for key in result:
             results[key].append(result[key])
     df = pd.DataFrame(results, columns = columns)
