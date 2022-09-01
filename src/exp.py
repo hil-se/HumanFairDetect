@@ -2,6 +2,7 @@ from sklearn.compose import make_column_selector as selector
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from fermi import FERMI
 from load_data import load
 import numpy as np
@@ -107,7 +108,7 @@ class Exp:
         X_test.index = range(len(X_test))
         return X_train, X_test, y_train, y_test
 
-    def inject_bias(self, X_train, y_train):
+    def inject_bias(self, X_train, y_train, clf=KNeighborsClassifier()):
         if self.inject is not None:
             if self.inject == "synthetic":
                 n = len(y_train)
@@ -118,11 +119,11 @@ class Exp:
                     y_train[i] = hire
             else:
                 X_train_trans = self.preprocessor.fit_transform(X_train)
-                clf = LogisticRegression()
+                # clf = LogisticRegression()
                 clf.fit(X_train_trans, y_train)
-                # ind = clf.classes_[0]
-                # pred_score = clf.predict_proba(X_train_trans)[:, 1-ind]
-                pred_score = clf.decision_function(X_train_trans)
+                ind = clf.classes_[0]
+                pred_score = clf.predict_proba(X_train_trans)[:, 1-ind]
+                # pred_score = clf.decision_function(X_train_trans)
                 for a in self.inject:
                     if self.inject[a] > 0:
                         aa = 1
