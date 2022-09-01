@@ -1,0 +1,5 @@
+Treatment,Accuracy,EOD,AOD
+None,0.85 \pm 0.00,0.18 \pm 0.03,0.13 \pm 0.02
+GroupClassBalance,0.82 \pm 0.00,0.08 \pm 0.02,0.02 \pm 0.01
+FairBalance,0.81 \pm 0.00,0.10 \pm 0.02,0.03 \pm 0.01
+ST,0.82 \pm 0.00,0.14 \pm 0.02,0.03 \pm 0.01

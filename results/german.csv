@@ -1,0 +1,8 @@
+Treatment,Accuracy,EOD,AOD
+None,0.75 \pm 0.01,0.22 \pm 0.08,0.22 \pm 0.07
+Reweighing,0.74 \pm 0.01,0.10 \pm 0.04,0.12 \pm 0.05
+GroupClassBalance,0.71 \pm 0.02,0.19 \pm 0.09,0.12 \pm 0.05
+ClassBalance,0.72 \pm 0.01,0.32 \pm 0.10,0.25 \pm 0.08
+GroupEqual,0.74 \pm 0.01,0.26 \pm 0.08,0.24 \pm 0.07
+GroupBalanceEqual,0.73 \pm 0.02,0.14 \pm 0.07,0.14 \pm 0.07
+FairBalance,0.70 \pm 0.02,0.16 \pm 0.07,0.14 \pm 0.05
