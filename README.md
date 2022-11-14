@@ -1,6 +1,6 @@
 ### Testing Fairness in Human Decisions With Machine Learning Algorithmic Bias
 
-#### Data
+#### Data (included in the [data/](https://github.com/hil-se/HumanFairDetect/tree/master/data) folder)
 
  - Adult, Bank, and Heart datasets
    + Raw data comes from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php).
